@@ -625,4 +625,7 @@ interface IDevicePolicyManager {
 
     void setMaxPolicyStorageLimit(String packageName, int storageLimit);
     int getMaxPolicyStorageLimit(String packageName);
+
+    // Lineage SDK bringup
+    boolean requireSecureKeyguard(int userHandle);
 }
