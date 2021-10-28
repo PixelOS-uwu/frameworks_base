@@ -89,6 +89,8 @@ class Idmap2Service : public BinderService<Idmap2Service>, public BnIdmap2 {
   };
   std::unordered_map<std::string, CachedContainer> container_cache_;
   std::mutex container_cache_mutex_;
+  std::unique_ptr<idmap2::TargetResourceContainer> framework_apk_cache_;
+  std::unique_ptr<idmap2::TargetResourceContainer> lineage_apk_cache_;
 
   int32_t frro_iter_id_ = 0;
   std::optional<std::filesystem::directory_iterator> frro_iter_;
