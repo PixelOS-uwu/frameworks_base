@@ -5899,9 +5899,30 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         return sleepDurationRealtime > mWakeUpToLastStateTimeout;
     }
 
-    private void wakeUpFromPowerKey(long eventTime) {
-        if (wakeUp(eventTime, mAllowTheaterModeWakeFromPowerKey,
-                PowerManager.WAKE_REASON_POWER_BUTTON, "android.policy:POWER")) {
+    private void wakeUpFromWakeKey(KeyEvent event) {
+        wakeUpFromWakeKey(
+                event.getEventTime(),
+                event.getKeyCode(),
+                event.getAction() == KeyEvent.ACTION_DOWN,
+                false);
+    }
+
+    private void wakeUpFromWakeKey(KeyEvent event, boolean withProximityCheck) {
+        wakeUpFromWakeKey(
+                event.getEventTime(),
+                event.getKeyCode(),
+                event.getAction() == KeyEvent.ACTION_DOWN,
+                withProximityCheck);
+    }
+
+    private void wakeUpFromWakeKey(long eventTime, int keyCode, boolean isDown) {
+        wakeUpFromWakeKey(eventTime, keyCode, isDown, false);
+    }
+
+    private void wakeUpFromWakeKey(long eventTime, int keyCode, boolean isDown,
+            boolean withProximityCheck) {
+        if (mWindowWakeUpPolicy.wakeUpFromKey(eventTime, keyCode, isDown, withProximityCheck)) {
+            final boolean keyCanLaunchHome = keyCode == KEYCODE_HOME || keyCode == KEYCODE_POWER;
             // Start HOME with "reason" extra if sleeping for more than mWakeUpToLastStateTimeout
             if (shouldWakeUpWithHomeIntent()) {
                 startDockOrHome(DEFAULT_DISPLAY, /*fromHomeKey*/ false, /*wakenFromDreams*/ true,
