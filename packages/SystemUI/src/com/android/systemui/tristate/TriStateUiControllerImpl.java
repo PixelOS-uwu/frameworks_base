@@ -158,6 +158,10 @@ public class TriStateUiControllerImpl implements TriStateUiController,
         public void onConfigurationChanged() {
             updateTriStateLayout();
         }
+	      
+        // Android 14 QPR3 merge fix up
+        @Override
+	public void onVolumeChangedFromKey() { }
     };
 
     private int mDensity;
