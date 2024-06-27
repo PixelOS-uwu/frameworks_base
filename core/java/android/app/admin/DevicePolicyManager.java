@@ -17511,7 +17511,6 @@ public class DevicePolicyManager {
         }
         return -1;
     }
-}
 
     /**
      * Lineage: check if secure keyguard is required
