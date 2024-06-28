@@ -17430,7 +17430,6 @@ public class DevicePolicyManager {
         return null;
     }
 
-<<<<<<< HEAD
     // TODO(b/308755220): Remove once the build is finalised.
     /**
      * Returns true if the flag for the onboarding bugreport V2 is enabled.

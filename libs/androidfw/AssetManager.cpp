@@ -371,12 +371,12 @@ bool AssetManager::addDefaultAssets()
     bool success = true;
     {
        String8 path(root);
-       path.appendPath(kSystemAssets);
+       appendPath(path, kSystemAssets);
        success &= addAssetPath(path, NULL, false /* appAsLib */, true /* isSystemAsset */);
     }
     {
        String8 path(root);
-       path.appendPath(kLineageAssets);
+       appendPath(path, kLineageAssets);
        success &= addAssetPath(path, NULL, false /* appAsLib */, true /* isSystemAsset */);
     }
 

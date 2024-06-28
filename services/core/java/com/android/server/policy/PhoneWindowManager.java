@@ -281,9 +281,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
     static final boolean DEBUG_KEYGUARD = false;
     static final boolean DEBUG_WAKEUP = false;
 
-    // LineageOS need
-    private final boolean mAllowTheaterModeWakeFromKey;
-    
     // Whether to allow dock apps with METADATA_DOCK_HOME to temporarily take over the Home key.
     // No longer recommended for desk docks;
     static final boolean ENABLE_DESK_DOCK_HOME_CAPTURE = false;
