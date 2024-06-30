@@ -529,7 +529,7 @@
             android:targetActivity=".tuner.TunerActivity"
             android:icon="@drawable/tuner"
             android:theme="@style/Theme.SubSettingsBase"
-            android:label="@string/status_bar_icons"
+            android:label="@string/status_bar_icons_title"
             android:process=":tuner"
             android:exported="true">
             <intent-filter>

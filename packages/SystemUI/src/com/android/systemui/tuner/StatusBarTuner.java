@@ -18,16 +18,13 @@ package com.android.systemui.tuner;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import androidx.annotation.Nullable;
 import androidx.preference.PreferenceFragment;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
-import com.android.systemui.res.R;
+import com.android.systemui.R;
 
 public class StatusBarTuner extends PreferenceFragment {
-
-    private MetricsLogger mMetricsLogger;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -41,21 +38,15 @@ public class StatusBarTuner extends PreferenceFragment {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mMetricsLogger = new MetricsLogger();
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
-        mMetricsLogger.visibility(MetricsEvent.TUNER, true);
+        MetricsLogger.visibility(getContext(), MetricsEvent.TUNER, true);
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mMetricsLogger.visibility(MetricsEvent.TUNER, false);
+        MetricsLogger.visibility(getContext(), MetricsEvent.TUNER, false);
     }
 
     @Override
